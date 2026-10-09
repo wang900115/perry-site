@@ -6,14 +6,14 @@ fetch('https://api.github.com/repos/wang900115/'+el.dataset.s).then(function(r){
 
 // terminal typing (language-aware)
 var T={
-zh:{city:'"台北"',focus:['"分散式"','"高併發"','"交易"'],note:'  // 不可變，沒有伺服器'},
-en:{city:'"Taipei"',focus:['"distributed"','"concurrency"','"trading"'],note:'  // immutable, no server'}};
+zh:{city:'"台北"',focus:['"分散式"','"高併發"','"交易"'],note:'  // 星際伺服器'},
+en:{city:'"Taipei"',focus:['"distributed"','"concurrency"','"trading"'],note:'  // InterPlanetary File System'}};
 var timer=null;
 function lines(l){var t=T[l];return [
 ['c','// whoami'],['\n'],
 ['k','name'],['','     = '],['s','"Perry Wang"'],['\n'],
 ['k','city'],['','     = '],['s',t.city],['\n'],
-['k','langs'],['','    = []string{'],['s','"Go"'],['',', '],['s','"Rust"'],['',', '],['s','"Tolk"'],['',', '],['s','"Solidity"'],['','}'],['\n'],
+['k','langs'],['','    = []string{'],['s','"Go"'],['',', '],['s','"Rust"'],['',', '],['s','"Tolk"'],['',', '],['s','"Solidity"'],['',', '],['s','"Etc..."'],['','}'],['\n'],
 ['k','focus'],['','    = []string{'],['s',t.focus[0]],['',', '],['s',t.focus[1]],['',', '],['s',t.focus[2]],['','}'],['\n'],
 ['k','hosting'],['','  = '],['w','"IPFS"'],['c',t.note],['\n'],
 ['c','$ '],['cur']];}

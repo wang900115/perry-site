@@ -25,7 +25,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # ---------- 0. 檢查設定：缺什麼就跳過對應步驟 ----------
+
       - name: Check configuration
         id: cfg
         env:
@@ -38,7 +38,7 @@ jobs:
           if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then echo "pages=true"; else echo "pages=false"; echo "::warning::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID not set - skipping Cloudflare Pages" >&2; fi >> "$GITHUB_OUTPUT"
           if [ -n "$CF_TOKEN" ] && [ -n "$CF_ZONE" ] && [ -n "$SITE_DOMAIN" ]; then echo "dnslink=true"; else echo "dnslink=false"; echo "::warning::CLOUDFLARE_ZONE_ID secret or SITE_DOMAIN variable not set - skipping DNSLink" >&2; fi >> "$GITHUB_OUTPUT"
 
-      # ---------- 1. Pin 到 IPFS (Pinata) ----------
+
       - name: Pin site/ to Pinata
         id: pin
         if: steps.cfg.outputs.pinata == 'true'
@@ -61,7 +61,7 @@ jobs:
           echo "CID: $CID"
           echo "cid=$CID" >> "$GITHUB_OUTPUT"
 
-      # ---------- 2. 部署到 Cloudflare Pages ----------
+
       - name: Deploy to Cloudflare Pages
         if: steps.cfg.outputs.pages == 'true'
         env:
@@ -76,7 +76,7 @@ jobs:
             | jq -c '{success, errors: [.errors[]?.message]}'
           npx --yes wrangler@3 pages deploy site --project-name="${PAGES_PROJECT}" --branch=main --commit-dirty=true
 
-      # ---------- 3. 更新 DNSLink (_dnslink TXT) ----------
+
       - name: Update DNSLink
         if: steps.cfg.outputs.dnslink == 'true' && steps.pin.outputs.cid != ''
         env:
@@ -100,7 +100,7 @@ jobs:
           fi
           echo "DNSLink: ${NAME} -> /ipfs/${CID}"
 
-      # ---------- 4. 記錄 CID 與摘要 ----------
+
       - name: Write CID.md & summary
         if: steps.pin.outputs.cid != ''
         env:
