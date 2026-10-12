@@ -3,8 +3,8 @@
 | | |
 |---|---|
 | **Site** | https://perrywang.dev |
-| **CID** | `bafybeiedto6rbcbc6dbcyzf62j7rxc4qnwxc54m2hmlglh6bbxcaxr2vd4` |
-| **Commit** | `1c47f51` |
-| **dweb.link** | https://bafybeiedto6rbcbc6dbcyzf62j7rxc4qnwxc54m2hmlglh6bbxcaxr2vd4.ipfs.dweb.link/ |
-| **Pinata** | https://gateway.pinata.cloud/ipfs/bafybeiedto6rbcbc6dbcyzf62j7rxc4qnwxc54m2hmlglh6bbxcaxr2vd4/ |
-| **ipfs.io** | https://ipfs.io/ipfs/bafybeiedto6rbcbc6dbcyzf62j7rxc4qnwxc54m2hmlglh6bbxcaxr2vd4/ |
+| **CID** | `bafybeigjmkopu6lq7n5x7jh5xg3h5o3dx3xqydw4awhmqdsfty37p2ggjq` |
+| **Commit** | `54b3bdd` |
+| **dweb.link** | https://bafybeigjmkopu6lq7n5x7jh5xg3h5o3dx3xqydw4awhmqdsfty37p2ggjq.ipfs.dweb.link/ |
+| **Pinata** | https://gateway.pinata.cloud/ipfs/bafybeigjmkopu6lq7n5x7jh5xg3h5o3dx3xqydw4awhmqdsfty37p2ggjq/ |
+| **ipfs.io** | https://ipfs.io/ipfs/bafybeigjmkopu6lq7n5x7jh5xg3h5o3dx3xqydw4awhmqdsfty37p2ggjq/ |
