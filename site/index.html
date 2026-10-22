@@ -61,40 +61,46 @@
 
     <section id="about">
         <div class="wrap">
-            <h2><span class="zh">關於我</span><span class="en">about</span></h2>
-            <div class="about">
-                <div>
-                    <p><span class="zh">我是 <b>Perry Wang</b>，台北的軟體工程師，主力語言是
-                            <b>Go</b>。我習慣往底層挖：並發模型、runtime、網路與效能，再把複雜系統拆成小而清楚、可測試的介面。</span><span class="en">I'm
-                            <b>Perry Wang</b>, a software engineer in Taipei whose main language is <b>Go</b>. I like
-                            digging into the low level — concurrency models, runtime, networking and performance — then
-                            breaking complex systems into small, clear, testable interfaces.</span></p>
-                    <p><span class="zh">我的興趣集中在兩條線：<b>去中心化系統</b>，從 P2P 加密通訊、分散式檔案系統到 stack-based
-                            VM；以及<b>量化交易</b>，包括多交易所行情、停損停利策略引擎和即時通知。</span><span class="en">My interests follow two
-                            tracks: <b>decentralized systems</b> — from P2P encrypted messaging and distributed file
-                            systems to stack-based VMs — and <b>quant trading</b>, including multi-exchange market data,
-                            stop-loss / take-profit engines and real-time alerts.</span></p>
-                    <p><span class="zh">這個網站本身就放在 <b>IPFS</b> 上：沒有伺服器、沒有後台，每次 push 都會自動 pin 成新的 CID。</span><span
-                            class="en">This site itself lives on <b>IPFS</b>: no servers, no backend — every push is
-                            automatically pinned as a new CID.</span></p>
+            <div class="go-function">
+                <div class="go-function-signature" aria-hidden="true"><span class="go-keyword">func</span> About() <span class="go-brace">{</span></div>
+                <div class="go-function-body">
+                <div class="about">
+                    <div>
+                        <p><span class="zh">我是 <b>Perry Wang</b>，台北的軟體工程師，主力語言是
+                                <b>Go</b>。我習慣往底層挖：並發模型、runtime、網路與效能，再把複雜系統拆成小而清楚、可測試的介面。</span><span class="en">I'm
+                                <b>Perry Wang</b>, a software engineer in Taipei whose main language is <b>Go</b>. I like
+                                digging into the low level — concurrency models, runtime, networking and performance — then
+                                breaking complex systems into small, clear, testable interfaces.</span></p>
+                        <p><span class="zh">我的興趣集中在兩條線：<b>去中心化系統</b>，從 P2P 加密通訊、分散式檔案系統到 stack-based
+                                VM；以及<b>量化交易</b>，包括多交易所行情、停損停利策略引擎和即時通知。</span><span class="en">My interests follow two
+                                tracks: <b>decentralized systems</b> — from P2P encrypted messaging and distributed file
+                                systems to stack-based VMs — and <b>quant trading</b>, including multi-exchange market data,
+                                stop-loss / take-profit engines and real-time alerts.</span></p>
+                    </div>
+                    <ul class="facts">
+                        <li><span><span class="zh">所在地</span><span class="en">location</span></span><span class="zh">台北，台灣
+                                🇹🇼</span><span class="en">Taipei, Taiwan 🇹🇼</span></li>
+                        <li><span><span class="zh">主力語言</span><span class="en">main lang</span></span>Go</li>
+                        <li><span><span class="zh">也寫</span><span class="en">also</span></span>Rust · Tolk · Solidity</li>
+                        <li><span><span class="zh">專注</span><span class="en">focus</span></span><span class="zh">分散式 ·
+                                高併發</span><span class="en">Distributed · Concurrency</span></li>
+                        <li><span><span class="zh">座右銘</span><span class="en">motto</span></span>live life</li>
+                    </ul>
                 </div>
-                <ul class="facts">
-                    <li><span><span class="zh">所在地</span><span class="en">location</span></span><span class="zh">台北，台灣
-                            🇹🇼</span><span class="en">Taipei, Taiwan 🇹🇼</span></li>
-                    <li><span><span class="zh">主力語言</span><span class="en">main lang</span></span>Go</li>
-                    <li><span><span class="zh">也寫</span><span class="en">also</span></span>Rust · Tolk · Solidity</li>
-                    <li><span><span class="zh">專注</span><span class="en">focus</span></span><span class="zh">分散式 ·
-                            高併發</span><span class="en">Distributed · Concurrency</span></li>
-                    <li><span><span class="zh">座右銘</span><span class="en">motto</span></span>live life</li>
-                </ul>
+                </div>
+                <div class="go-function-close" aria-hidden="true">}</div>
             </div>
         </div>
     </section>
 
     <section id="projects">
         <div class="wrap">
-            <h2><span class="zh">精選專案</span><span class="en">projects · pinned</span></h2>
-            <div class="grid">
+            <div class="go-function">
+                <div class="go-function-signature" aria-hidden="true"><span class="go-keyword">func</span> Projects() <span class="go-brace">{</span></div>
+                <div class="go-function-body">
+                    <div class="marquee" role="region" aria-label="精選專案 / pinned projects">
+                        <div class="marquee-track">
+                            <div class="grid marquee-group">
                 <a class="card" href="https://github.com/wang900115/go-perry" target="_blank" rel="noopener"><span
                         class="n">01</span>
                     <h3>go-perry</h3>
@@ -151,41 +157,57 @@
                             class="chip">hydra</span><span class="chip">steghide</span></div>
                     <div class="meta"><span class="lang" style="--c:var(--sh)">Security</span></div>
                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="go-function-close" aria-hidden="true">}</div>
             </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="wrap">
-            <h2><span class="zh">技能</span><span class="en">skills</span></h2>
-            <div class="stack">
-                <div>
-                    <h4><span class="zh">程式語言</span><span class="en">languages</span></h4>
-                    <div class="chips"><span class="chip hl">Go</span><span class="chip hl">Rust</span><span
-                            class="chip hl">Tolk</span><span class="chip hl">Solidity</span><span
-                            class="chip">C</span><span class="chip">C++</span><span class="chip">Java</span><span
-                            class="chip">Python</span><span class="chip hl">TypeScript</span><span
-                            class="chip">JavaScript</span><span class="chip">HTML / CSS</span></div>
-                </div>
-                <div>
-                    <h4><span class="zh">框架與工具</span><span class="en">frameworks &amp; tools</span></h4>
-                    <div class="chips"><span class="chip">Gin</span><span class="chip">Echo</span><span
-                            class="chip">React</span><span class="chip">Vue</span><span class="chip">Django</span><span
-                            class="chip">FastAPI</span><span class="chip">Git</span><span
-                            class="chip">Docker</span><span class="chip">Kubernetes</span></div>
-                </div>
-                <div>
-                    <h4><span class="zh">專注領域</span><span class="en">focus areas</span></h4>
-                    <div class="chips">
-                        <span class="chip"><span class="zh">分散式系統</span><span class="en">Distributed
-                                Systems</span></span><span class="chip"><span class="zh">高併發</span><span class="en">High
-                                Concurrency</span></span><span class="chip"><span class="zh">微服務</span><span
-                                class="en">Microservices</span></span><span class="chip"><span
-                                class="zh">交易系統</span><span class="en">Trading Systems</span></span><span
-                            class="chip">P2P</span><span class="chip"><span class="zh">智能合約</span><span class="en">Smart
-                                Contracts</span></span>
+            <div class="go-function">
+                <div class="go-function-signature" aria-hidden="true"><span class="go-keyword">func</span> Skills() <span class="go-brace">{</span></div>
+                <div class="go-function-body">
+                    <div class="globe-world">
+                <div class="globe-scene" role="group" aria-label="Skills globe"
+                    aria-describedby="globe-hint">
+                    <div class="globe" aria-hidden="true">
+                        <canvas class="globe-canvas"></canvas>
+                        <div class="globe-map"></div>
+                    </div>
+                    <div class="globe-skills">
+                        <span class="chip hl skill-language">Go</span><span class="chip hl skill-language">Rust</span>
+                        <span class="chip hl skill-language">Tolk</span><span class="chip hl skill-language">Solidity</span>
+                        <span class="chip skill-language">C</span><span class="chip skill-language">C++</span>
+                        <span class="chip skill-language">Java</span><span class="chip skill-language">Python</span>
+                        <span class="chip hl skill-language">TypeScript</span><span class="chip skill-language">JavaScript</span>
+                        <span class="chip skill-language">HTML / CSS</span>
+
+                        <span class="chip skill-tool">Gin</span><span class="chip skill-tool">Echo</span>
+                        <span class="chip skill-tool">React</span><span class="chip skill-tool">Vue</span>
+                        <span class="chip skill-tool">Django</span><span class="chip skill-tool">FastAPI</span>
+                        <span class="chip skill-tool">Git</span><span class="chip skill-tool">Docker</span>
+                        <span class="chip skill-tool">Kubernetes</span>
+
+                        <span class="chip skill-focus"><span class="zh">分散式系統</span><span class="en">Distributed Systems</span></span>
+                        <span class="chip skill-focus"><span class="zh">高併發</span><span class="en">High Concurrency</span></span>
+                        <span class="chip skill-focus"><span class="zh">微服務</span><span class="en">Microservices</span></span>
+                        <span class="chip skill-focus"><span class="zh">交易系統</span><span class="en">Trading Systems</span></span>
+                        <span class="chip skill-focus">P2P</span>
+                        <span class="chip skill-focus"><span class="zh">智能合約</span><span class="en">Smart Contracts</span></span>
                     </div>
                 </div>
+                        <div class="globe-legend" aria-label="Skill categories">
+                    <span class="legend-item legend-language"><i></i><span class="zh">程式語言</span><span class="en">Languages</span></span>
+                    <span class="legend-item legend-tool"><i></i><span class="zh">框架與工具</span><span class="en">Frameworks &amp; tools</span></span>
+                    <span class="legend-item legend-focus"><i></i><span class="zh">專注領域</span><span class="en">Focus areas</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="go-function-close" aria-hidden="true">}</div>
             </div>
         </div>
     </section>
@@ -197,7 +219,6 @@
                     Blockchain ? Get in touch.</span></p>
             <div class="btns">
                 <a class="btn" href="https://github.com/wang900115" target="_blank" rel="noopener">GitHub ↗</a>
-                <a class="btn ghost" href="mailto:aa0970606353@gmail.com">aa0970606353@gmail.com</a>
             </div>
         </div>
     </section>
