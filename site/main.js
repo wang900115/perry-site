@@ -16,7 +16,7 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
     var sphere = scene.querySelector('.globe'), canvas = scene.querySelector('.globe-canvas');
     var chips = Array.prototype.slice.call(scene.querySelectorAll('.globe-skills .chip'));
     var gl = canvas.getContext('webgl', { alpha: true, antialias: true, preserveDrawingBuffer: true });
-    var rx = -15, ry = 0;
+    var rx = 20, ry = -30;
     var skillCoordinates = [
         [39, 116], [49, 10], [40, 80], [20, 78], [39, -98], [58, -110],
         [-15, -50], [0, 110], [36, 138], [40, 100], [10, -75],
@@ -76,12 +76,12 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
             '  float longitudeGrid = 1.0 - smoothstep(0.0, 0.018, abs(sin((vUv.x - 0.5) * 37.699)));',
             '  float latitudeGrid = 1.0 - smoothstep(0.0, 0.018, abs(sin((vUv.y - 0.5) * 18.85)));',
             '  float grid = max(longitudeGrid, latitudeGrid) * 0.13;',
-            '  float rim = pow(1.0 - max(normal.z, 0.0), 2.2);',
-            '  float specular = pow(max(dot(normal, normalize(light + vec3(0.0, 0.0, 1.0))), 0.0), 28.0);',
+            // '  float rim = pow(1.0 - max(normal.z, 0.0), 2.2);',
+            // '  float specular = pow(max(dot(normal, normalize(light + vec3(0.0, 0.0, 1.0))), 0.0), 28.0);',
             '  vec3 color = mix(ocean, land, landMask);',
-            '  color = mix(color, vec3(0.34, 0.49, 0.66), grid);',
-            '  color += vec3(0.12, 0.38, 0.72) * rim * 0.68;',
-            '  color += vec3(0.55, 0.76, 1.0) * specular * 0.34;',
+            // '  color = mix(color, vec3(0.34, 0.49, 0.66), grid);',
+            // '  color += vec3(0.12, 0.38, 0.72) * rim * 0.68;',
+            // '  color += vec3(0.55, 0.76, 1.0) * specular * 0.34;',
             '  gl_FragColor = vec4(color, 1.0);',
             '}'
         ].join('\n');
@@ -232,7 +232,7 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
         var delta = lastFrame ? Math.min(now - lastFrame, 50) : 0;
         lastFrame = now;
         if (!reducedMotion && !document.hidden) {
-            ry += delta * .004;
+            ry += delta * .0067;
             render();
         }
         if (!reducedMotion && !document.hidden) {
@@ -266,7 +266,7 @@ document.querySelectorAll('[data-s]').forEach(function (el) {
 // terminal typing (language-aware)
 var T = {
     zh: { city: '"台北"', focus: ['"分散式"', '"高併發"', '"交易"'] },
-    en: { city: '"Taipei"', focus: ['"distributed"', '"concurrency"', '"trading"']}
+    en: { city: '"Taipei"', focus: ['"distributed"', '"concurrency"', '"trading"'] }
 };
 var timer = null;
 function lines(l) {

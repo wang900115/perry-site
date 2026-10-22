@@ -539,7 +539,6 @@ h2:before {
     inset: 0;
     z-index: 3;
     background:
-        radial-gradient(ellipse at 28% 21%, rgba(191, 226, 255, .45), transparent 4%),
         radial-gradient(ellipse at 31% 24%, rgba(95, 169, 235, .18), transparent 27%),
         radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(1, 5, 16, .3) 76%, rgba(0, 2, 10, .9) 100%),
         linear-gradient(115deg, rgba(130, 192, 255, .1), transparent 40%, rgba(0, 0, 0, .26) 100%);
