@@ -16,7 +16,7 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
     var sphere = scene.querySelector('.globe'), canvas = scene.querySelector('.globe-canvas');
     var chips = Array.prototype.slice.call(scene.querySelectorAll('.globe-skills .chip'));
     var gl = canvas.getContext('webgl', { alpha: true, antialias: true, preserveDrawingBuffer: true });
-    var rx = -15, ry = 0, hovered = false;
+    var rx = -15, ry = 0;
     var skillCoordinates = [
         [39, 116], [49, 10], [40, 80], [20, 78], [39, -98], [58, -110],
         [-15, -50], [0, 110], [36, 138], [40, 100], [10, -75],
@@ -25,8 +25,7 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
         [25, 100], [25, -10], [-42, 147], [20, -100], [-25, 25], [-25, 135]
     ];
     var reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var idleDelay = 1800, lastInteraction = performance.now(), lastFrame = 0;
-    var frameRequest = 0, idleTimer = 0;
+    var lastFrame = 0, frameRequest = 0;
 
     if (!gl) {
         console.error('Interactive globe requires WebGL; using the static map fallback.');
@@ -232,11 +231,11 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
         frameRequest = 0;
         var delta = lastFrame ? Math.min(now - lastFrame, 50) : 0;
         lastFrame = now;
-        if (!hovered && !reducedMotion && now - lastInteraction >= idleDelay) {
+        if (!reducedMotion && !document.hidden) {
             ry += delta * .004;
             render();
         }
-        if (!hovered && !reducedMotion && !document.hidden && now - lastInteraction >= idleDelay) {
+        if (!reducedMotion && !document.hidden) {
             frameRequest = requestAnimationFrame(animate);
         }
     }
@@ -245,35 +244,20 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
         if (!frameRequest) frameRequest = requestAnimationFrame(animate);
     }
 
-    function noteInteraction() {
-        lastInteraction = performance.now();
+    function resumeAnimation() {
         lastFrame = 0;
-        clearTimeout(idleTimer);
-        idleTimer = setTimeout(requestRender, idleDelay);
         requestRender();
     }
 
     document.addEventListener('visibilitychange', function () {
         lastFrame = 0;
-        if (!document.hidden) noteInteraction();
+        if (!document.hidden) requestRender();
     });
 
-    sphere.addEventListener('pointerenter', function () {
-        hovered = true;
-        lastFrame = 0;
-        if (frameRequest) cancelAnimationFrame(frameRequest);
-        frameRequest = 0;
-    });
-    sphere.addEventListener('pointerleave', function () {
-        hovered = false;
-        lastInteraction = performance.now() - idleDelay;
-        lastFrame = 0;
-        requestRender();
-    });
-    window.addEventListener('resize', noteInteraction);
+    window.addEventListener('resize', resumeAnimation);
     if (gl && !program) sphere.classList.add('webgl-fallback');
     render();
-    if (gl && program) noteInteraction();
+    if (gl && program) requestRender();
 });
 document.querySelectorAll('[data-s]').forEach(function (el) {
     fetch('https://api.github.com/repos/wang900115/' + el.dataset.s).then(function (r) { return r.ok ? r.json() : null }).then(function (j) { if (j && typeof j.stargazers_count === 'number') el.textContent = j.stargazers_count }).catch(function () { })
