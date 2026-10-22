@@ -258,13 +258,13 @@ document.querySelectorAll('.globe-scene').forEach(function (scene) {
         if (!document.hidden) noteInteraction();
     });
 
-    scene.addEventListener('pointerenter', function () {
+    sphere.addEventListener('pointerenter', function () {
         hovered = true;
         lastFrame = 0;
         if (frameRequest) cancelAnimationFrame(frameRequest);
         frameRequest = 0;
     });
-    scene.addEventListener('pointerleave', function () {
+    sphere.addEventListener('pointerleave', function () {
         hovered = false;
         lastInteraction = performance.now() - idleDelay;
         lastFrame = 0;
