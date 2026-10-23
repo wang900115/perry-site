@@ -12,6 +12,61 @@ document.querySelectorAll('.marquee-track').forEach(function (track) {
     track.appendChild(copy);
     track.parentElement.classList.add('is-ready');
 });
+document.querySelectorAll('.experience-timeline').forEach(function (timeline) {
+    var range = timeline.querySelector('.timeline-range');
+    var cards = Array.prototype.slice.call(timeline.querySelectorAll('.experience-card'));
+    var startDate = new Date(2024, 10, 1);
+    var endDate = new Date();
+    var duration = endDate.getTime() - startDate.getTime();
+    var points = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-milestones li'));
+    var milestones = points.map(function (point) {
+        var parts = point.dataset.timelineDate.split('-');
+        var date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        var position = Math.max(0, Math.min(100, (date.getTime() - startDate.getTime()) / duration * 100));
+        point.style.setProperty('--position', position + '%');
+        return position;
+    });
+
+    timeline.querySelectorAll('.timeline-years [data-timeline-date]').forEach(function (label) {
+        var parts = label.dataset.timelineDate.split('-');
+        var date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        var position = (date.getTime() - startDate.getTime()) / duration * 100;
+        label.style.setProperty('--position', position + '%');
+    });
+    range.value = '0';
+
+    function selectExperience(index) {
+        cards.forEach(function (card, cardIndex) {
+            var active = cardIndex === index;
+            card.classList.toggle('is-active', active);
+            card.setAttribute('aria-pressed', String(active));
+            points[cardIndex].classList.toggle('is-active', active);
+        });
+    }
+
+    function updateTimeline() {
+        var value = Number(range.value);
+        var selected = milestones.reduce(function (current, point, index) {
+            return value >= point ? index : current;
+        }, 0);
+        timeline.style.setProperty('--timeline-progress', value + '%');
+        selectExperience(selected);
+        range.setAttribute('aria-label', document.documentElement.className === 'en'
+            ? 'Career timeline, November 2024 to present'
+            : '工作經歷時間線，從 2024/11 至今');
+        range.setAttribute('aria-valuetext', cards[selected].querySelector('.experience-date').innerText.trim() + ' — ' +
+            cards[selected].querySelector('strong').innerText.trim());
+    }
+
+    range.addEventListener('input', updateTimeline);
+    cards.forEach(function (card, index) {
+        card.addEventListener('click', function () {
+            range.value = milestones[index];
+            updateTimeline();
+        });
+    });
+    updateTimeline();
+});
 document.querySelectorAll('.globe-scene').forEach(function (scene) {
     var sphere = scene.querySelector('.globe'), canvas = scene.querySelector('.globe-canvas');
     var chips = Array.prototype.slice.call(scene.querySelectorAll('.globe-skills .chip'));
@@ -297,7 +352,10 @@ function type(l) {
 // language toggle
 function setLang(l) {
     var d = document.documentElement; d.className = l; d.lang = l === 'en' ? 'en' : 'zh-Hant';
-    try { localStorage.setItem('lang', l) } catch (e) { } type(l)
+    try { localStorage.setItem('lang', l) } catch (e) { } type(l);
+    document.querySelectorAll('.timeline-range').forEach(function (range) {
+        range.dispatchEvent(new Event('input', { bubbles: true }));
+    });
 }
 document.querySelectorAll('.lt button').forEach(function (b) { b.onclick = function () { if (document.documentElement.className !== b.dataset.l) setLang(b.dataset.l) } });
 type(document.documentElement.className === 'en' ? 'en' : 'zh');

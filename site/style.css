@@ -441,6 +441,215 @@ h2:before {
     font-weight: 600
 }
 
+.experience-timeline {
+    --timeline-progress: 0%;
+}
+
+.timeline-hint {
+    color: var(--mute);
+    font-size: 13px;
+    margin-bottom: 18px
+}
+
+.timeline {
+    padding: 0 4px
+}
+
+.timeline-years {
+    height: 17px;
+    position: relative;
+    color: var(--mute);
+    font: 11px var(--mono)
+}
+
+.timeline-years > span {
+    position: absolute;
+    left: var(--position);
+    transform: translateX(-50%)
+}
+
+.timeline-years > span:first-child {
+    transform: none
+}
+
+.timeline-years > span:last-child {
+    transform: translateX(-100%)
+}
+
+.timeline-years .timeline-now {
+    left: 100%;
+}
+
+.timeline-slider {
+    height: 36px;
+    position: relative;
+    margin: 2px 0 18px
+}
+
+.timeline-rail,
+.timeline-progress {
+    height: 3px;
+    position: absolute;
+    top: 16px;
+    left: 0;
+    border-radius: 99px
+}
+
+.timeline-rail {
+    width: 100%;
+    background: var(--line)
+}
+
+.timeline-progress {
+    width: var(--timeline-progress);
+    background: linear-gradient(90deg, var(--acc), var(--hi))
+}
+
+.timeline-milestones {
+    position: absolute;
+    inset: 0;
+    list-style: none;
+    pointer-events: none
+}
+
+.timeline-milestones li {
+    position: absolute;
+    left: var(--position);
+    top: 11px;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--acc2);
+    border-radius: 50%;
+    background: var(--panel);
+    color: var(--acc2);
+    font: 7px var(--mono);
+    transform: translateX(-50%)
+}
+
+.timeline-milestones li::after {
+    content: attr(data-index)
+}
+
+.timeline-milestones li.is-active {
+    border-color: var(--hi);
+    background: var(--acc);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(69, 174, 245, .55)
+}
+
+.timeline-range {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 36px;
+    margin: 0;
+    background: transparent;
+    cursor: grab;
+    touch-action: pan-y
+}
+
+.timeline-range:active {
+    cursor: grabbing
+}
+
+.timeline-range:focus-visible {
+    outline: 2px solid var(--hi);
+    outline-offset: 3px;
+    border-radius: 99px
+}
+
+.timeline-range::-webkit-slider-runnable-track {
+    height: 36px;
+    background: transparent
+}
+
+.timeline-range::-moz-range-track {
+    height: 36px;
+    background: transparent
+}
+
+.timeline-range::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    margin-top: 8.5px;
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    background: var(--hi);
+    box-shadow: 0 0 0 2px var(--acc), 0 0 14px rgba(69, 174, 245, .65)
+}
+
+.timeline-range::-moz-range-thumb {
+    width: 13px;
+    height: 13px;
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    background: var(--hi);
+    box-shadow: 0 0 0 2px var(--acc), 0 0 14px rgba(69, 174, 245, .65)
+}
+
+.experience-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px
+}
+
+.experience-card {
+    min-width: 0;
+    position: relative;
+    padding: 13px 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--panel);
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .2s, background .2s
+}
+
+.experience-card:hover,
+.experience-card.is-active {
+    border-color: var(--acc);
+    background: #11243a
+}
+
+.experience-card:focus-visible {
+    outline: 2px solid var(--hi);
+    outline-offset: 2px
+}
+
+.experience-date {
+    display: block;
+    margin-bottom: 5px;
+    padding-right: 26px;
+    color: var(--mute);
+    font: 10px/1.5 var(--mono);
+    white-space: nowrap
+}
+
+.experience-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #4e6887;
+    font: 10px var(--mono)
+}
+
+.experience-card.is-active .experience-number {
+    color: var(--hi)
+}
+
+.experience-card strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.45
+}
+
 .facts {
     list-style: none;
     font: 14px var(--mono)
@@ -717,6 +926,18 @@ footer .wrap {
 
     .about {
         grid-template-columns: 1fr
+    }
+
+    .experience-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
+    .experience-card {
+        padding: 11px 9px
+    }
+
+    .experience-date {
+        font-size: 9px
     }
 
     header {
