@@ -11,6 +11,7 @@
     --go: #00add8;
     --rust: #dea584;
     --sh: #89e051;
+    --py: #3572a5;
     --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --sans: system-ui, -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif
 }
